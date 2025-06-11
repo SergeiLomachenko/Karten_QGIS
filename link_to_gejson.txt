@@ -1,0 +1,1 @@
+https://public.opendatasoft.com/api/records/1.0/download/?dataset=georef-switzerland-postleitzahl&format=geojson
