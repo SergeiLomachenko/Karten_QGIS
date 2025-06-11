@@ -1,1 +1,1 @@
-https://public.opendatasoft.com/api/records/1.0/download/?dataset=georef-switzerland-postleitzahl&format=geojson
+https://68495785e880849c4bcc0561--sage-khapse-85d88d.netlify.app/Regions_with_PLZ_and_color.geojson
