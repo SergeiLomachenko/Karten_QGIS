@@ -1,41 +1,39 @@
-!DOCTYPE html
-html
-head
-  meta charset=utf-8
-  titleMy GeoJSON Maptitle
-  meta name=viewport content=width=device-width, initial-scale=1.0
-  !-- Подключаем стили Leaflet --
-  link rel=stylesheet href=httpsunpkg.comleafletdistleaflet.css 
-  style
-    #map {
-      height 100vh;
-    }
-  style
-head
-body
-  div id=mapdiv
-  !-- Подключаем скрипты Leaflet --
-  script src=httpsunpkg.comleafletdistleaflet.jsscript
-  script
-     Инициализируем карту и устанавливаем начальный вид
-    var map = L.map('map').setView([55.751244, 37.618423], 5);
-    
-     Добавляем базовый слой карты (например, OpenStreetMap)
-    L.tileLayer('https{s}.tile.openstreetmap.org{z}{x}{y}.png', {
-      maxZoom 19,
-      attribution '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-    
-     Загружаем GeoJSON-файл
-    fetch('Regions_with_PLZ_and_color.geojson')
-      .then(function(response) { return response.json(); })
-      .then(function(data) {
-         Добавляем слой GeoJSON на карту
-        L.geoJSON(data).addTo(map);
-      })
-      .catch(function(error) {
-        console.error('Error loading GeoJSON', error);
-      });
-  script
-body
-html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My GeoJSON Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map { height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <!-- Подключаем скрипты Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Инициализируем карту и устанавливаем начальный вид
+      var map = L.map('map').setView([55.751244, 37.618423], 5);
+      
+      // Добавляем базовый слой карты (например, OpenStreetMap)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+      
+      // Загружаем GeoJSON-файл
+      fetch('Regions_with_PLZ_and_color.geojson')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          // Добавляем слой GeoJSON на карту
+          L.geoJSON(data).addTo(map);
+        })
+        .catch(function(error) {
+          console.error('Error loading GeoJSON:', error);
+        });
+    </script>
+  </body>
+</html>
